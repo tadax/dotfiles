@@ -1,0 +1,9 @@
+# WIP...
+
+# git
+git config --global user.name tadax
+git config --global user.email tadax@users.noreply.github.com
+git config --global core.editor "vim"
+git config --global core.filemode false
+git config --global init.defaultBranch master
+git config --global pull.rebase false  # the default strategy
