@@ -7,3 +7,4 @@ git config --global core.editor "vim"
 git config --global core.filemode false
 git config --global init.defaultBranch master
 git config --global pull.rebase false  # the default strategy
+git config --global push.default current  # cf. https://qiita.com/erii/items/e107b91a58f8250838da
