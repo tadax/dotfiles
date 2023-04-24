@@ -1,0 +1,9 @@
+ForwardAgent yes
+AddKeysToAgent yes
+ServerAliveInterval 60
+ServerAliveCountMax 120
+
+Host github
+    HostName github.com
+    IdentityFile ~/.ssh/key
+    User git
