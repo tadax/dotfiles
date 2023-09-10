@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Install GHCup
+# cf. https://zenn.dev/mod_poppo/articles/haskell-setup-2023
+if [ ! -d $HOME/.ghcup ]
+then
+    sudo apt update -y
+    sudo apt install -y \
+        build-essential \
+        curl \
+        libffi-dev \
+        libffi8ubuntu1 \
+        libgmp-dev \
+        libgmp10 \
+        libncurses-dev \
+        libncurses5 \
+        libtinfo5
+    curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+    echo -e '\n# ghcup' >> $HOME/.bashrc
+    echo '[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"' >> $HOME/.bashrc
+fi
