@@ -1,4 +1,13 @@
-# WIP...
+#!/bin/bash
+
+PYTHON_VERSION="3.10.2"
+
+# vim
+cp .vimrc $HOME/.vimrc
+
+# ssh
+mkdir $HOME/.ssh
+cp .ssh-config $HOME/.ssh/config
 
 # git
 git config --global user.name tadax
@@ -8,3 +17,34 @@ git config --global core.filemode false
 git config --global init.defaultBranch master
 git config --global pull.rebase false  # the default strategy
 git config --global push.default current  # cf. https://qiita.com/erii/items/e107b91a58f8250838da
+
+# Install python on Big Sur
+# cf. https://github.com/pyenv/pyenv/issues/1219#issuecomment-727951276
+if [ ! "$(python -V)" = "Python "$PYTHON_VERSION ]; then
+    LDFLAGS="-L$(xcrun --show-sdk-path)/usr/lib" pyenv install $PYTHON_VERSION
+    pyenv global $PYTHON_VERSION
+    pip install -U pip
+fi
+
+# brew
+if [ ! `which brew` = "/usr/local/bin/brew" ]; then
+    ! type brew >/dev/null 2>&1 &&
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" &&
+    brew doctor
+fi
+brew update --verbose
+! type wget >/dev/null 2>&1 && brew install wget
+! type mas >/dev/null 2>&1 && brew install mas
+! type ffmpeg >/dev/null 2>&1 && brew install ffmpeg
+! type tree >/dev/null 2>&1 && brew install tree
+
+# show extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# use bash instead of zsh
+if [ "$(echo $SHELL)" = "/bin/zsh" ]; then
+    chsh -s /bin/bash
+    echo "export BASH_SILENCE_DEPRECATION_WARNING=1" >> $HOME/.bash_profile
+    echo 'alias ll="ls -alFG"' >> $HOME/.bash_profile && alias ll="ls -alFG"
+    echo 'alias grep="grep --color=auto"' >> $HOME/.bash_profile && alias grep="grep --color=auto"
+fi
