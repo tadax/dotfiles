@@ -67,3 +67,8 @@ then
     pyenv global $PYTHON_VERSION
     pip install -U pip
 fi
+
+# support 日本語入力
+sudo apt update -y
+sudo apt install ibus-mozc
+echo "Computer reboot is required"
