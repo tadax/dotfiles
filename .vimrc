@@ -8,6 +8,10 @@ set autoindent
 set nowrap
 set encoding=utf-8
 set re=0
+
+" 0 が前置されている場合でも 10 進数として扱う
+set nrformats=
+
 syntax on
 
 autocmd BufNewFile,BufRead *.js setlocal sw=2 sts=2 ts=2 et
