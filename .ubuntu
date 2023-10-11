@@ -72,3 +72,6 @@ fi
 sudo apt update -y
 sudo apt install ibus-mozc
 echo "Computer reboot is required"
+
+# install vlc
+sudo snap install vlc
