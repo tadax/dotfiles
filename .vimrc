@@ -13,6 +13,11 @@ set history=200
 " 0 が前置されている場合でも 10 進数として扱う
 set nrformats=
 
+" %コマンドの拡張
+set nocompatible
+filetype plugin on
+runtime macros/matchit.vim
+
 " 履歴を参照する際にカーソルキーを使わない
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
