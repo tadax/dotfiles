@@ -5,3 +5,15 @@
 - [お前らのSSH Keysの作り方は間違っている](https://qiita.com/suthio/items/2760e4cff0e185fe2db9)
 - [ubuntuにCUDA、nvidiaドライバをインストールするメモ](https://qiita.com/porizou1/items/74d8264d6381ee2941bd)
 - [Ubuntu18.04 + CUDA + cuDNN + Pytorchの環境構築](https://techblog.nullstack.engineer/entry/cuda-setup/)
+
+## MacOS
+
+### SSHFS
+```
+$ brew install macfuse
+$ brew install sshfs
+```
+
+#### References
+- https://blog.kmdkuk.com/2021/06/05/macでsshfsをインストール.html
+- https://qiita.com/h_tyokinuhata/items/8a0669c149796aec21a9
