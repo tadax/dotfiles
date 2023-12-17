@@ -9,11 +9,14 @@
 ## MacOS
 
 ### SSHFS
-```
-$ brew install macfuse
-$ brew install sshfs
-```
+https://osxfuse.github.io から MacFUSE と SSHFS をインストールする。
+ただし実行するには Benjamin Fleischer 氏の署名した機能拡張を有効にする必要がある (cf. https://applech2.com/archives/20230314-mounty-for-ntfs-v2-support-macos-13-ventura.html )。
+機能拡張を有効にするには Recovery mode でセキュリティレベルを下げる必要がある (cf. https://iboysoft.com/howto/enable-system-extension-m1-mac.html )。
 
-#### References
-- https://blog.kmdkuk.com/2021/06/05/macでsshfsをインストール.html
-- https://qiita.com/h_tyokinuhata/items/8a0669c149796aec21a9
+実行例
+```
+$ mkdir -p /Users/tadax/mnt/home
+$ sshfs gpu:/home/tadax /Users/tadax/mnt/home
+$ mkdir -p /Users/tadax/mnt/dev
+$ sshfs gpu:/mnt/dev /Users/tadax/mnt/dev
+```
