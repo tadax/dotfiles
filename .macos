@@ -1,13 +1,43 @@
 #!/bin/bash
 
-PYTHON_VERSION="3.10.2"
+PYTHON_VERSION="3.11.5"
+
+# use bash instead of zsh
+if [ "$(echo $SHELL)" = "/bin/zsh" ]; then
+    chsh -s /bin/bash
+    echo "export BASH_SILENCE_DEPRECATION_WARNING=1" >> $HOME/.bash_profile
+    echo 'alias ll="ls -alFG"' >> $HOME/.bash_profile && alias ll="ls -alFG"
+    echo 'alias grep="grep --color=auto"' >> $HOME/.bash_profile && alias grep="grep --color=auto"
+fi
+
+# brew
+if [ ! `which brew` = "/usr/local/bin/brew" ]; then
+    ! type brew >/dev/null 2>&1 &&
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" &&
+    brew doctor
+fi
+brew update --verbose
 
 # vim
-cp .vimrc $HOME/.vimrc
+if [ -e $HOME/.vimrc ]
+then
+    echo "\"$HOME/.vimrc\" already exists."
+else
+    cp .vimrc $HOME/.vimrc
+fi
+
 
 # ssh
-mkdir $HOME/.ssh
-cp .ssh-config $HOME/.ssh/config
+if [ ! -d $HOME/.ssh/ ]
+then
+    mkdir $HOME/.ssh/
+fi
+if [ -e $HOME/.ssh/config ]
+then
+    echo "\"$HOME/.ssh/config\" already exists."
+else
+    cp .ssh_config $HOME/.ssh/config
+fi
 
 # git
 git config --global user.name tadax
@@ -18,6 +48,18 @@ git config --global init.defaultBranch master
 git config --global pull.rebase false  # the default strategy
 git config --global push.default current  # cf. https://qiita.com/erii/items/e107b91a58f8250838da
 
+# pyenv
+brew install openssl readline sqlite3 xz zlib tcl-tk
+if [ ! -d $HOME/.pyenv ]
+then
+    git clone https://github.com/pyenv/pyenv.git $HOME/.pyenv
+    echo -e '\n# pyenv' >> $HOME/.bash_profile
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
+    echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
+    echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
+    # cf. https://askubuntu.com/questions/64387/cannot-successfully-source-bashrc-from-a-shell-script
+    eval "$(cat ~/.bash_profile | tail -n 3)"
+fi
 # Install python on Big Sur
 # cf. https://github.com/pyenv/pyenv/issues/1219#issuecomment-727951276
 if [ ! "$(python -V)" = "Python "$PYTHON_VERSION ]; then
@@ -26,13 +68,6 @@ if [ ! "$(python -V)" = "Python "$PYTHON_VERSION ]; then
     pip install -U pip
 fi
 
-# brew
-if [ ! `which brew` = "/usr/local/bin/brew" ]; then
-    ! type brew >/dev/null 2>&1 &&
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" &&
-    brew doctor
-fi
-brew update --verbose
 ! type wget >/dev/null 2>&1 && brew install wget
 ! type mas >/dev/null 2>&1 && brew install mas
 ! type ffmpeg >/dev/null 2>&1 && brew install ffmpeg
@@ -40,11 +75,3 @@ brew update --verbose
 
 # show extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-
-# use bash instead of zsh
-if [ "$(echo $SHELL)" = "/bin/zsh" ]; then
-    chsh -s /bin/bash
-    echo "export BASH_SILENCE_DEPRECATION_WARNING=1" >> $HOME/.bash_profile
-    echo 'alias ll="ls -alFG"' >> $HOME/.bash_profile && alias ll="ls -alFG"
-    echo 'alias grep="grep --color=auto"' >> $HOME/.bash_profile && alias grep="grep --color=auto"
-fi
