@@ -10,6 +10,9 @@ if [ "$(echo $SHELL)" = "/bin/zsh" ]; then
     echo 'alias grep="grep --color=auto"' >> $HOME/.bash_profile && alias grep="grep --color=auto"
 fi
 
+# show extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
 # brew
 if [ ! `which brew` = "/usr/local/bin/brew" ]; then
     ! type brew >/dev/null 2>&1 &&
@@ -25,7 +28,6 @@ then
 else
     cp .vimrc $HOME/.vimrc
 fi
-
 
 # ssh
 if [ ! -d $HOME/.ssh/ ]
@@ -45,8 +47,10 @@ git config --global user.email tadax@users.noreply.github.com
 git config --global core.editor "vim"
 git config --global core.filemode false
 git config --global init.defaultBranch master
-git config --global pull.rebase false  # the default strategy
-git config --global push.default current  # cf. https://qiita.com/erii/items/e107b91a58f8250838da
+# the default strategy
+git config --global pull.rebase false
+# cf. https://qiita.com/erii/items/e107b91a58f8250838da
+git config --global push.default current
 
 # pyenv
 brew install openssl readline sqlite3 xz zlib tcl-tk
@@ -73,5 +77,7 @@ fi
 ! type ffmpeg >/dev/null 2>&1 && brew install ffmpeg
 ! type tree >/dev/null 2>&1 && brew install tree
 
-# show extensions
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+# node
+# https://github.com/tj/n
+brew install n
+n install latest
