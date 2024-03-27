@@ -10,6 +10,13 @@ set encoding=utf-8
 set re=0
 set history=200
 
+" backspace の拡張
+" cf. https://maku77.github.io/vim/settings/backspace.html
+set backspace=indent,eol,start
+
+" cf. https://stackoverflow.com/questions/30691466/what-is-difference-between-vims-clipboard-unnamed-and-unnamedplus-settings
+set clipboard^=unnamed,unnamedplus
+
 " 0 が前置されている場合でも 10 進数として扱う
 set nrformats=
 
