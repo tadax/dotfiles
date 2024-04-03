@@ -76,6 +76,7 @@ fi
 ! type mas >/dev/null 2>&1 && brew install mas
 ! type ffmpeg >/dev/null 2>&1 && brew install ffmpeg
 ! type tree >/dev/null 2>&1 && brew install tree
+! type tmux >/dev/null 2>&1 && brew install tmux
 
 # node
 # https://github.com/tj/n
