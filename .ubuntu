@@ -11,7 +11,8 @@ sudo apt install -y \
   wget \
   pwgen \
   net-tools \
-  openssh-server
+  openssh-server \
+  tmux
 
 # vim
 if [ -e $HOME/.vimrc ]
