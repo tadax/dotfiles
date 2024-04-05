@@ -75,3 +75,9 @@ sudo snap install vlc
 # install font
 # https://pcaro.es/hermit/
 sudo cp fonts/Hermit-Regular.otf /usr/local/share/fonts
+
+# node
+sudo apt install -y node
+# https://github.com/tj/n
+sudo npm install -g n
+sudo n latest
