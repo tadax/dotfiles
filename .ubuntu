@@ -42,10 +42,6 @@ git config --global init.defaultBranch master
 git config --global pull.rebase false  # the default strategy
 git config --global push.default current  # cf. https://qiita.com/erii/items/e107b91a58f8250838da
 
-# font
-sudo apt install -y fonts-inconsolata
-sudo fc-cache -fv
-
 # pyenv
 # cf. https://github.com/pyenv/pyenv/wiki#suggested-build-environment
 PYTHON_VERSION="3.11.5"
@@ -70,8 +66,12 @@ fi
 
 # support 日本語入力
 sudo apt update -y
-sudo apt install ibus-mozc
+sudo apt install ibus-mozc -y
 echo "Computer reboot is required"
 
 # install vlc
 sudo snap install vlc
+
+# install font
+# https://pcaro.es/hermit/
+sudo cp fonts/Hermit-Regular.otf /usr/local/share/fonts
