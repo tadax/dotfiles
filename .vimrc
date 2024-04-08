@@ -29,8 +29,18 @@ runtime macros/matchit.vim
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
+" Install Vundle
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+  Plugin 'VundleVim/Vundle.vim'
+  Plugin 'itchyny/vim-haskell-indent'
+call vundle#end()
+filetype plugin indent on
 syntax on
 
+autocmd BufNewFile,BufRead *.hs setlocal sw=2 sts=2 ts=2 et
 autocmd BufNewFile,BufRead *.js setlocal sw=2 sts=2 ts=2 et
 autocmd BufNewFile,BufRead *.jsx setlocal sw=2 sts=2 ts=2 et
 autocmd BufNewFile,BufRead *.ts setlocal sw=2 sts=2 ts=2 et
