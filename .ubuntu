@@ -12,7 +12,9 @@ sudo apt install -y \
   pwgen \
   net-tools \
   openssh-server \
-  tmux
+  tmux \
+  ffmpeg \
+  xsel
 
 # vim
 if [ -e $HOME/.vimrc ]
