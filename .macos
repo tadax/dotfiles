@@ -87,3 +87,6 @@ fi
 # https://github.com/tj/n
 brew install n
 n install latest
+
+# haskell
+brew install ghc cabal-install
