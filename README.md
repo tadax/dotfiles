@@ -6,6 +6,7 @@
 - [ubuntuにCUDA、nvidiaドライバをインストールするメモ](https://qiita.com/porizou1/items/74d8264d6381ee2941bd)
 - [Ubuntu18.04 + CUDA + cuDNN + Pytorchの環境構築](https://techblog.nullstack.engineer/entry/cuda-setup/)
 - [MacのTerminalでsudo実行時にタッチIDを使用する方法](https://dev.classmethod.jp/articles/mac-terminal-sudo-touch-id/)
+- [【Ubuntu】内蔵HDDを/etc/fstabを使って自動マウント](https://heppoko-room.net/archives/1878)
 
 ## Ubuntu
 
