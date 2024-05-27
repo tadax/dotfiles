@@ -85,7 +85,7 @@ sudo snap install vlc
 sudo cp fonts/Hermit-Regular.otf /usr/local/share/fonts
 
 # node
-sudo apt install -y node
+sudo apt install -y nodejs npm
 # https://github.com/tj/n
 sudo npm install -g n
 sudo n latest
@@ -111,3 +111,10 @@ EOF
 fi 
 current_dir=$(pwd)
 cd ${HOME}/.youtube-dl/ && git pull && cd "$current_dir"
+
+
+# Install haskell
+./.haskell
+
+# Set the CapsLock key to the Ctrl key
+sudo cp ./etc-default-keyboard /etc/default/keyboard
