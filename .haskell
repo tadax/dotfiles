@@ -9,12 +9,12 @@ then
         build-essential \
         curl \
         libffi-dev \
+        libffi8 \
         libffi8ubuntu1 \
         libgmp-dev \
         libgmp10 \
         libncurses-dev \
-        libncurses5 \
-        libtinfo5
+        pkg-config
     curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
     echo -e '\n# ghcup' >> $HOME/.bashrc
     echo '[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"' >> $HOME/.bashrc
