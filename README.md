@@ -8,6 +8,26 @@
 - [MacのTerminalでsudo実行時にタッチIDを使用する方法](https://dev.classmethod.jp/articles/mac-terminal-sudo-touch-id/)
 - [【Ubuntu】内蔵HDDを/etc/fstabを使って自動マウント](https://heppoko-room.net/archives/1878)
 
+## Ubuntu
+
+### Adjust brightness on Apple Studio Display
+
+1. Install nvidia-driver
+
+Install `nvidia-driver-535`
+```
+$ ./.ubuntu2404-cuda121
+```
+
+2. Install `brighness-controller`
+
+```
+$ sudo apt install brightness-controller
+```
+
+cf. https://www.geeksforgeeks.org/how-to-control-screen-brightness-in-ubuntu-22-04/
+
+
 
 ## MacOS
 
