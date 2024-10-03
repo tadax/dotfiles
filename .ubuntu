@@ -112,6 +112,8 @@ fi
 current_dir=$(pwd)
 cd ${HOME}/.youtube-dl/ && git pull && cd "$current_dir"
 
+# Install rust
+./.rust
 
 # Install haskell
 ./.haskell
