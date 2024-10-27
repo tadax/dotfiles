@@ -83,6 +83,16 @@ fi
 ! type tree >/dev/null 2>&1 && brew install tree
 ! type tmux >/dev/null 2>&1 && brew install tmux
 
+# Loading .bashrc
+cat << 'EOF' >> ~/.bashrc
+
+# loading .bashrc
+if [ -f ~/.bashrc ]; then
+  source ~/.bashrc
+fi
+EOF
+fi
+
 # node
 # https://github.com/tj/n
 brew install n
@@ -91,21 +101,13 @@ n install latest
 # haskell
 brew install ghc cabal-install
 
-# youtube-dl
-if [ ! -d ${HOME}/.youtube-dl/ ]
-then
-    git clone https://github.com/ytdl-org/youtube-dl.git ${HOME}/.youtube-dl
-    cat << 'EOF' >> ~/.bashrc
-function youtube-dl() {
-    local current_dir=$(pwd)
-    cd "${HOME}/.youtube-dl" || return
-    python -m youtube_dl \
-      -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" \
-      "$@" \
-      --output "${current_dir}/%(title)s-%(id)s.%(ext)s"
-    cd "$current_dir"
-}
-EOF
-fi 
-current_dir=$(pwd)
-cd ${HOME}/.youtube-dl/ && git pull && cd "$current_dir"
+# rust
+# cf. https://zenn.dev/icck/articles/f2e8ecaf6bd8bf
+brew install rustup-init
+rustup-init -y
+
+# Install youtube-dl
+#./.youtube_dl
+
+# Install yt-dlp
+./.yt_dlp
