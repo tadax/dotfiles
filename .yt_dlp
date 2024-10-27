@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ ! -d ${HOME}/.yt-dlp/ ]
+then
+    git clone https://github.com/yt-dlp/yt-dlp.git ${HOME}/.yt-dlp
+    cat << 'EOF' >> ~/.bashrc
+
+# yt-dlp
+function yt-dlp() {
+    local current_dir=$(pwd)
+    cd "${HOME}/.yt-dlp" || return
+    python -m yt_dlp \
+      -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" \
+      "$@" \
+      --output "${current_dir}/%(title)s-%(id)s.%(ext)s"
+    cd "$current_dir"
+}
+EOF
+fi 
+
+current_dir=$(pwd)
+cd ${HOME}/.yt-dlp/ && git pull && cd "$current_dir"

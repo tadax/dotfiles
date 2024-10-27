@@ -90,27 +90,11 @@ sudo apt install -y nodejs npm
 sudo npm install -g n
 sudo n latest
 
-# youtube-dl
-if [ ! -d ${HOME}/.youtube-dl/ ]
-then
-    git clone https://github.com/ytdl-org/youtube-dl.git ${HOME}/.youtube-dl
-    cat << 'EOF' >> ~/.bashrc
+# Install youtube-dl
+#./.youtube_dl
 
-# youtube-dl
-function youtube-dl() {
-    local current_dir=$(pwd)
-    cd "${HOME}/.youtube-dl" || return
-    python -m youtube_dl \
-      -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" \
-      "$@" \
-      --output "${current_dir}/%(title)s-%(id)s.%(ext)s"
-    cd "$current_dir"
-}
-EOF
-
-fi 
-current_dir=$(pwd)
-cd ${HOME}/.youtube-dl/ && git pull && cd "$current_dir"
+# Install yt-dlp
+./.yt_dlp
 
 # Install rust
 ./.rust
