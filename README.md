@@ -16,7 +16,7 @@
 
 Install `nvidia-driver-535`
 ```
-$ ./.ubuntu2404-cuda121
+$ ./.cuda121-ubuntu2404
 ```
 
 2. Install `brighness-controller`
