@@ -7,41 +7,37 @@ then
 
 # yt-dlp
 function yt-dlp() {
-  local current_dir=$(pwd)
-  cd "${HOME}/.yt-dlp" || return
+    if [ "$#" -eq 0 ]; then
+        echo "Usage: yt-dlp [OPTIONS] URL [URL...]"
+        cd return
+    fi
+    
+    local current_dir=$(pwd)
+    cd "${HOME}/.yt-dlp" || return
 
-  # Get filename
-  local filename=$(
+    # Get filename
+    local filename=$(
+        python -m yt_dlp \
+        -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" \
+        "$@" \
+        --print "%(title)s-%(id)s.%(ext)s"
+    )
+
+    # Download a video
     python -m yt_dlp \
-    -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" \
-    "$@" \
-    --print "%(title)s-%(id)s.%(ext)s"
-  )
+        -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" \
+        "$@" \
+        --output "${current_dir}/${filename}"
 
-  # Download a video
-  if [[ -f "./temp.mp4" ]]; then
-    rm ./temp.mp4
-  fi
-  python -m yt_dlp \
-    -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" \
-    "$@" \
-    --output "./temp.mp4"
+    # Save thumbnail
+    python -m yt_dlp \
+        "$@" \
+        --write-thumbnail \
+        --convert-thumbnails jpg \
+        --skip-download \
+        --output "${current_dir}/%(title)s-%(id)s.%(ext)s.jpg"
 
-  # Append moov atom
-  if [[ -f "./temp.mp4" ]]; then
-    ffmpeg -i temp.mp4 -c:v copy -c:a copy -movflags +faststart "${current_dir}/${filename}" > /dev/null 2>&1
-    rm ./temp.mp4
-  fi
-
-  # Save thumbnail
-  python -m yt_dlp \
-    "$@" \
-    --write-thumbnail \
-    --convert-thumbnails jpg \
-    --skip-download \
-    --output "${current_dir}/%(title)s-%(id)s.%(ext)s.jpg"
-
-  cd "$current_dir"
+    cd "$current_dir"
 }
 EOF
 fi 
