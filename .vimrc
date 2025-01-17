@@ -8,6 +8,7 @@ set nowrap
 set encoding=utf-8
 set re=0
 set history=200
+set number
 
 " backspace の拡張
 " cf. https://maku77.github.io/vim/settings/backspace.html
@@ -36,6 +37,7 @@ call vundle#begin()
   Plugin 'VundleVim/Vundle.vim'
   Plugin 'itchyny/vim-haskell-indent'
   Plugin 'neovimhaskell/haskell-vim'
+  Plugin 'sheerun/vim-polyglot'
 call vundle#end()
 filetype plugin indent on
 syntax on
