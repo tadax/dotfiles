@@ -9,7 +9,7 @@ then
 function yt-dlp() {
     if [ "$#" -eq 0 ]; then
         echo "Usage: yt-dlp [OPTIONS] URL [URL...]"
-        cd return
+        return
     fi
     
     local current_dir=$(pwd)
