@@ -111,3 +111,6 @@ rustup-init -y
 
 # Install yt-dlp
 ./.yt_dlp
+
+# Install docker
+brew reinstall --cask docker
