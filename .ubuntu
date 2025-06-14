@@ -51,7 +51,7 @@ git config --global pull.rebase false  # the default strategy
 git config --global push.default current  # cf. https://qiita.com/erii/items/e107b91a58f8250838da
 
 # Add gclean alias to .bashrc
-echo 'alias gclean="git fetch origin && git checkout master && git pull && git branch -D $(git rev-parse --abbrev-ref HEAD)"' >> $HOME/.bashrc
+echo 'alias gclean="current=$(git rev-parse --abbrev-ref HEAD); git checkout master && git pull && git branch -D \"$current\""' >> $HOME/.bashrc
 
 # pyenv
 # cf. https://github.com/pyenv/pyenv/wiki#suggested-build-environment
