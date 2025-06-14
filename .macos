@@ -8,6 +8,7 @@ if [ "$(echo $SHELL)" = "/bin/zsh" ]; then
     echo "export BASH_SILENCE_DEPRECATION_WARNING=1" >> $HOME/.bash_profile
     echo 'alias ll="ls -alFG"' >> $HOME/.bash_profile && alias ll="ls -alFG"
     echo 'alias grep="grep --color=auto"' >> $HOME/.bash_profile && alias grep="grep --color=auto"
+    echo 'alias gclean="git fetch origin && git checkout master && git pull && git branch -D $(git rev-parse --abbrev-ref HEAD)"' >> $HOME/.bash_profile
 fi
 
 # show extensions
@@ -91,7 +92,6 @@ if [ -f ~/.bashrc ]; then
   source ~/.bashrc
 fi
 EOF
-fi
 
 # node
 # https://github.com/tj/n
