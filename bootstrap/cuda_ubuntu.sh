@@ -4,6 +4,9 @@ set -euo pipefail
 . /etc/os-release
 [ "${ID:-}" = "ubuntu" ] || { echo "This script is for Ubuntu."; exit 1; }
 
+# Prompt for the sudo password upfront to avoid interruptions later in the script.
+sudo -v
+
 echo "[cuda] Installing NVIDIA driver and CUDA toolkit..."
 
 # cf. https://www.liberiangeek.net/2024/04/install-cuda-on-ubuntu-24-04/
