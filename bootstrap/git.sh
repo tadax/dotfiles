@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "[git] Setting global configuration..."
+
+git config --global user.name tadax
+git config --global user.email tadax@users.noreply.github.com
+git config --global core.editor "vim"
+git config --global core.filemode false
+git config --global init.defaultBranch master
+git config --global pull.rebase false  # the default strategy
+git config --global push.default current  # cf. https://qiita.com/erii/items/e107b91a58f8250838da
+
+echo "[git] Global configuration complete."

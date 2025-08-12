@@ -35,3 +35,48 @@ cf. https://www.geeksforgeeks.org/how-to-control-screen-brightness-in-ubuntu-22-
 https://osxfuse.github.io から MacFUSE と SSHFS をインストールする。
 ただし実行するには Benjamin Fleischer 氏の署名した機能拡張を有効にする必要がある (cf. https://applech2.com/archives/20230314-mounty-for-ntfs-v2-support-macos-13-ventura.html )。
 機能拡張を有効にするには Recovery mode でセキュリティレベルを下げる必要がある (cf. https://iboysoft.com/howto/enable-system-extension-m1-mac.html )。
+
+
+### `bootstrap/` vs `scripts/`
+
+#### Purpose & Timing
+
+- `bootstrap/`: Initial setup scripts for a fresh machine.
+Used once when provisioning a new environment. Often OS-specific and package-manager-specific.
+Example: `bootstrap/apt.sh` (Debian/Ubuntu), `bootstrap/brew.sh` (macOS), `bootstrap/install_fonts.sh`.
+
+Goal: Install all system-level dependencies required for your dotfiles to work.
+
+`scripts/`: Utility and setup scripts you might run multiple times.
+Typically OS-agnostic or with minimal OS dependencies.
+Example: `scripts/setup_vim.sh` (install Vundle & Vim plugins), `scripts/setup_pyenv.sh` (install pyenv & Python), `scripts/update_all.sh`.
+
+Goal: Configure tools, install plugins, or update your environment after the base system is ready.
+
+
+#### Rule of Thumb
+
+- Does it depend heavily on the OS or package manager? -> Put it in `bootstrap/`.
+- Is it part of base environment provisioning? -> `bootstrap/`.
+- Can it be run multiple times after the environment exists? -> `scripts/`.
+- Is it about configuring or updating tools? -> `scripts/`.
+
+
+#### Workflow Example
+
+1. Run a `bootstrap/` script to install system dependencies.
+
+Example:
+
+```bash
+./bootstrap/apt.sh --upgrade
+```
+
+2. Run a `scripts/` script to configure tools.
+
+Example:
+
+```bash
+./scripts/setup_pyenv.sh
+./scripts/setup_vim.sh
+```
