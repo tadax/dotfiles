@@ -10,6 +10,7 @@ fi
 
 brew update --verbose
 
+! type stow >/dev/null 2>&1 && brew install stow
 ! type wget >/dev/null 2>&1 && brew install wget
 ! type mas >/dev/null 2>&1 && brew install mas
 ! type ffmpeg >/dev/null 2>&1 && brew install ffmpeg
