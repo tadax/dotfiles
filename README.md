@@ -15,7 +15,7 @@ cd dotfiles
 You only need to run this script - it will handle everything.
 
 ```bash
-./setup_all.sh
+./setup_all.sh --bootstrap --upgrade [--cuda]
 ```
 
 This will:
