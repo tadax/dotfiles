@@ -42,6 +42,7 @@ fi
 
 run_script "$ROOT/font.sh"
 run_script "$ROOT/keyboard.sh"
+run_script "$ROOT/display.sh"
 run_script "$ROOT/ssh.sh"
 run_script "$ROOT/vim.sh"
 run_script "$ROOT/git.sh"
