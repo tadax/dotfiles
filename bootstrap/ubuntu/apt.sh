@@ -52,4 +52,4 @@ fi
 
 sudo apt-get install -y --no-install-recommends "${pkgs[@]}"
 
-echo "Bootstrap (apt) done."
+echo "[apt] Done."

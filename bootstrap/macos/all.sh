@@ -19,11 +19,14 @@ run_script() {
 
 echo "[bootstrap] Starting macos setup"
 run_script "$ROOT/brew.sh"
+run_script "$ROOT/shell.sh"
+run_script "$ROOT/defaults.sh"
 run_script "$ROOT/vim.sh"
 run_script "$ROOT/ssh.sh"
 run_script "$ROOT/git.sh"
 run_script "$ROOT/pyenv.sh"
 run_script "$ROOT/rust.sh"
 run_script "$ROOT/haskell.sh"
+run_script "$ROOT/node.sh"
 
 echo "[bootstrap] Done."

@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# Add gclean alias to .bashrc
-echo 'alias gclean="git fetch origin && git checkout master && git pull && git branch -D $(git rev-parse --abbrev-ref HEAD)"' >> $HOME/.bashrc
-
-# AWS-CLI
-aws configure set default.s3.max_concurrent_requests 10
-aws configure set default.s3.multipart_chunksize 100MB

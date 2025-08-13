@@ -48,6 +48,7 @@ run_script "$ROOT/git.sh"
 run_script "$ROOT/pyenv.sh"
 run_script "$ROOT/rust.sh"
 run_script "$ROOT/haskell.sh"
+run_script "$ROOT/node.sh"
 run_script "$ROOT/docker.sh"
 
 if [ "$INSTALL_CUDA" -eq 1 ]; then
