@@ -23,15 +23,17 @@ This will:
 - Install required packages (brew for macOS, apt for Ubuntu)
 - Configure development tools (git, vim, ssh, etc.)
 - Apply OS-specific settings (keyboard, defaults, etc.)
-- Create symbolic links for dotfiles (install.sh is called automatically)
+- Create symbolic links for dotfiles (`install.sh` is called automatically)
 
 3. Directory Structure
 
 ```
-bootstrap/     # OS-specific setup scripts
-packages/      # OS-specific configuration files
-install.sh     # Symlinks dotfiles into $HOME
-setup_all.sh   # Runs bootstrap scripts, then calls install.sh
+./
+├── README.md
+├── bootstrap/     # OS-specific setup scripts
+├── packages/      # OS-specific configuration files
+├── install.sh     # Symlinks dotfiles into $HOME
+└── setup_all.sh   # Runs bootstrap scripts, then calls install.sh
 ```
 
 ## Notes
