@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-SRC_FILE="$ROOT/scripts/ubuntu/files/etc-default-keyboard"
+SRC_FILE="$ROOT/bootstrap/ubuntu/files/etc-default-keyboard"
 DEST_FILE="/etc/default/keyboard"
 
 if [ ! -f "$SRC_FILE" ]; then
