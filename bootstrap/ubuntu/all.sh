@@ -29,9 +29,9 @@ run_script() {
 echo "[bootstrap] Starting Ubuntu setup"
 
 if [ -x "$ROOT/apt.sh" ]; then
-  if [ "$APT_UPGRADE" -eq 1]; then
+  if [ "$APT_UPGRADE" -eq 1 ]; then
     echo "[run] apt.sh (with --upgrade)"
-    bach "$ROOT/apt.sh" --upgrade
+    bash "$ROOT/apt.sh" --upgrade
   else
     echo "[run] apt.sh"
     bash "$ROOT/apt.sh"
