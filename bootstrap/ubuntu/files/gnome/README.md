@@ -1,6 +1,6 @@
 # Export Instructions
 
-Run the following commands to export GNOME keybinding settings to .dconf files:
+Run the following commands to export GNOME keybinding settings to `.dconf` files:
 
 ```bash
 dconf dump /org/gnome/desktop/wm/keybindings/ > gnome-wm-keybindings.dconf
