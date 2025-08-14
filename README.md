@@ -11,7 +11,7 @@ cd dotfiles
 
 2. Run the Setup Script
 
-`setup_all.sh` runs the OS-specific bootstrap scripts and then calls install.sh to create symlinks for your dotfiles in the home directory.
+`setup_all.sh` runs the OS-specific bootstrap scripts and then calls `install.sh` to create symlinks for your dotfiles in the home directory.
 You only need to run this script - it will handle everything.
 
 ```bash
