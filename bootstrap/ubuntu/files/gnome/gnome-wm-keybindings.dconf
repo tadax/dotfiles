@@ -1,0 +1,4 @@
+[/]
+maximize=['<Control><Alt>m']
+switch-input-source=['<Control>space']
+switch-input-source-backward=['<Shift><Control>space']

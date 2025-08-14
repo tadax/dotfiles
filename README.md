@@ -1,5 +1,51 @@
 # dotfiles
 
+## Usage
+
+1. Clone the Repository
+
+```bash
+git clone https://github.com/yourname/dotfiles.git
+cd dotfiles
+```
+
+2. Run the Setup Script
+
+`setup_all.sh` runs the OS-specific bootstrap scripts and then calls install.sh to create symlinks for your dotfiles in the home directory.
+You only need to run this script - it will handle everything.
+
+```bash
+./setup_all.sh --bootstrap --upgrade [--cuda]
+```
+
+This will:
+
+- Install required packages (brew for macOS, apt for Ubuntu)
+- Configure development tools (git, vim, ssh, etc.)
+- Apply OS-specific settings (keyboard, defaults, etc.)
+- Create symbolic links for dotfiles (`install.sh` is called automatically)
+
+3. Directory Structure
+
+```
+./
+├── README.md
+├── bootstrap/     # OS-specific setup scripts
+├── packages/      # OS-specific configuration files
+├── install.sh     # Symlinks dotfiles into $HOME
+└── setup_all.sh   # Runs bootstrap scripts, then calls install.sh
+```
+
+
+## SSHFS for MacOS
+
+1. Install MacFUSE and SSHFS from [https://osxfuse.github.io](https://osxfuse.github.io).
+
+2. To run SSHFS on macOS, you must enable the system extension signed by Benjamin Fleischer (see this [reference](https://applech2.com/archives/20230314-mounty-for-ntfs-v2-support-macos-13-ventura.html)).
+
+3. Enabling the extension requires lowering the security level in Recovery Mode (see [this guide](https://iboysoft.com/howto/enable-system-extension-m1-mac.html)).
+
+
 ## Notes
 - [UbutnuでCapsLockキーをCtrlキーする方法](https://linux.just4fun.biz/?Ubuntu/Caps-Lock%E3%82%AD%E3%83%BC%E3%82%92Ctrl%E3%82%AD%E3%83%BC%E3%81%AB%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95)
 - [お前らのSSH Keysの作り方は間違っている](https://qiita.com/suthio/items/2760e4cff0e185fe2db9)
@@ -8,30 +54,3 @@
 - [MacのTerminalでsudo実行時にタッチIDを使用する方法](https://dev.classmethod.jp/articles/mac-terminal-sudo-touch-id/)
 - [【Ubuntu】内蔵HDDを/etc/fstabを使って自動マウント](https://heppoko-room.net/archives/1878)
 
-## Ubuntu
-
-### Adjust brightness on Apple Studio Display
-
-1. Install nvidia-driver
-
-Install `nvidia-driver-535`
-```
-$ ./.cuda121-ubuntu2404
-```
-
-2. Install `brighness-controller`
-
-```
-$ sudo apt install brightness-controller
-```
-
-cf. https://www.geeksforgeeks.org/how-to-control-screen-brightness-in-ubuntu-22-04/
-
-
-
-## MacOS
-
-### SSHFS
-https://osxfuse.github.io から MacFUSE と SSHFS をインストールする。
-ただし実行するには Benjamin Fleischer 氏の署名した機能拡張を有効にする必要がある (cf. https://applech2.com/archives/20230314-mounty-for-ntfs-v2-support-macos-13-ventura.html )。
-機能拡張を有効にするには Recovery mode でセキュリティレベルを下げる必要がある (cf. https://iboysoft.com/howto/enable-system-extension-m1-mac.html )。

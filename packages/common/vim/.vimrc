@@ -52,3 +52,4 @@ autocmd BufNewFile,BufRead *.css setlocal sw=2 sts=2 ts=2 et
 autocmd BufNewFile,BufRead *.json setlocal sw=2 sts=2 ts=2 et
 autocmd BufNewFile,BufRead *.yml setlocal sw=2 sts=2 ts=2 et
 autocmd BufNewFile,BufRead *.yaml setlocal sw=2 sts=2 ts=2 et
+autocmd BufNewFile,BufRead *.sh setlocal sw=2 sts=2 ts=2 et
