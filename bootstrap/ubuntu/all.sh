@@ -40,6 +40,7 @@ else
   echo "[skip] apt.sh (not found)"
 fi
 
+run_script "$ROOT/snap.sh"
 run_script "$ROOT/font.sh"
 run_script "$ROOT/keyboard.sh"
 run_script "$ROOT/display.sh"

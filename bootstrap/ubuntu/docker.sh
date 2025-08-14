@@ -30,3 +30,5 @@ chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 
 TARGET_USER="${SUDO_USER:-$USER}"
 sudo usermod -aG docker "$TARGET_USER"
+
+echo "[docker] Done."
