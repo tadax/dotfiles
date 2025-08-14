@@ -4,7 +4,7 @@ gclean() {
   local current_branch default_branch
   current_branch="$(git symbolic-ref --short -q HEAD || echo '')"
 
-  # デフォルトブランチは master を優先、なければ main
+  # Prefer "master" as the default branch; fallback to "main" if not found
   default_branch="master"
   if ! git show-ref --verify --quiet "refs/heads/$default_branch"; then
     default_branch="main"
