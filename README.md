@@ -36,8 +36,11 @@ This will:
 └── setup_all.sh   # Runs bootstrap scripts, then calls install.sh
 ```
 
+---
 
-## SSHFS for MacOS
+## Notes
+
+### SSHFS for MacOS
 
 1. Install MacFUSE and SSHFS from [https://osxfuse.github.io](https://osxfuse.github.io).
 
@@ -45,8 +48,7 @@ This will:
 
 3. Enabling the extension requires lowering the security level in Recovery Mode (see [this guide](https://iboysoft.com/howto/enable-system-extension-m1-mac.html)).
 
-
-## Notes
+### References
 - [UbutnuでCapsLockキーをCtrlキーする方法](https://linux.just4fun.biz/?Ubuntu/Caps-Lock%E3%82%AD%E3%83%BC%E3%82%92Ctrl%E3%82%AD%E3%83%BC%E3%81%AB%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95)
 - [お前らのSSH Keysの作り方は間違っている](https://qiita.com/suthio/items/2760e4cff0e185fe2db9)
 - [How to Install Cuda on Ubuntu 24.04](https://www.liberiangeek.net/2024/04/install-cuda-on-ubuntu-24-04/)
