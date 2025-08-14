@@ -36,16 +36,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-append_once() {
-  local file="$1" line="$2"
-  mkdir -p "$(dirname -- "$file")"
-  [ -f "$file" ] || : > "$file"
-  grep -Fqx "$line" "$file" || printf '%s\n' "$line" >> "$file"
-}
-append_once "$HOME/.bashrc" 'export PYENV_ROOT="$HOME/.pyenv"'
-append_once "$HOME/.bashrc" 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"'
-append_once "$HOME/.bashrc" 'eval "$(pyenv init -)"'
-
 if ! pyenv versions --bare | grep -Fqx "$PYTHON_VERSION"; then
   echo "[pyenv] installing Python $PYTHON_VERSION"
   pyenv install "$PYTHON_VERSION"
