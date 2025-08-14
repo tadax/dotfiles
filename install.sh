@@ -36,7 +36,7 @@ mkdir -p "$HOME/.config"
 ORDER=("common" "$OS_NAME")
 for group in "${ORDER[@]}"; do
   group_dir="$PKG_DIR/$group"
-  shopt -s nullglob
+  shopt -s nullglob dotglob
   subpkgs=("$group_dir"/*/)
   for sub in "${subpkgs[@]}"; do
     pkg_name="$(basename "$sub")"
