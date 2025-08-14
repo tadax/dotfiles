@@ -3,6 +3,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")" && pwd)"
 PKG_DIR="$ROOT/packages"
+TARGET_DIR="$HOME"
 
 detect_os() {
   case "$(uname -s)" in
@@ -33,12 +34,15 @@ fi
 mkdir -p "$HOME/.config"
 
 ORDER=("common" "$OS_NAME")
-for name in "${ORDER[@]}"; do
-  pkg="$PKG_ROOT/$name"
-  [ -d "$pkg" ] || { echo "[INFO] Skip (not found): $name"; continue; }
-
-  echo "[INFO] Linking package:  $name -> $TARGET_DIR"
-  stow -d "$PKG_ROOT" -t "$TARGET_DIR" "$name"
+for group in "${ORDER[@]}"; do
+  group_dir="$PKG_DIR/$group"
+  shopt -s nullglob
+  subpkgs=("$group_dir"/*/)
+  for sub in "${subpkgs[@]}"; do
+    pkg_name="$(basename "$sub")"
+    echo "[INFO] Linking package: $group/$pkg_name -> $TARGET_DIR"
+    stow -d "$group_dir" -t "$TARGET_DIR" "$pkg_name"
+  done
 done
 
 echo "[packages] Done."
