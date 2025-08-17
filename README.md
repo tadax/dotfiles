@@ -5,7 +5,7 @@
 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourname/dotfiles.git
+git clone https://github.com/tadax/dotfiles.git
 cd dotfiles
 ```
 
