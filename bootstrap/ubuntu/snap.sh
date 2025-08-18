@@ -11,5 +11,6 @@ fi
 echo "[snap] Installing packages..."
 sudo snap install vlc
 sudo snap install aws-cli --classic
+sudo snap install slack
 
 echo "[snap] Done."
