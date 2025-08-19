@@ -44,5 +44,3 @@ for group in "${ORDER[@]}"; do
     stow -d "$group_dir" -t "$TARGET_DIR" "$pkg_name"
   done
 done
-
-echo "[packages] Done."
