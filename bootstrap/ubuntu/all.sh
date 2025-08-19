@@ -11,7 +11,7 @@ fi
 ROOT="$(cd "$(dirname "$0")" && pwd)"
 
 DRY_RUN="${DRY_RUN:-0}"
-APT_UPGRADE="${APT_UPGRADE:-0}"
+BOOTSTRAP_UPGRADE="${BOOTSTRAP_UPGRADE:-0}"
 INSTALL_CUDA="${INSTALL_CUDA:-0}"
 
 run_script() {
@@ -29,7 +29,7 @@ run_script() {
 echo "[bootstrap] Starting Ubuntu setup"
 
 if [ -x "$ROOT/apt.sh" ]; then
-  if [ "$APT_UPGRADE" -eq 1 ]; then
+  if [ "$BOOTSTRAP_UPGRADE" -eq 1 ]; then
     echo "[run] apt.sh (with --upgrade)"
     bash "$ROOT/apt.sh" --upgrade
   else

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Disable gnome-keyring SSH
+Exec=true
+Hidden=true
+NoDisplay=true
+X-GNOME-Autostart-enabled=false
