@@ -15,8 +15,9 @@ if [ ! -e "$HOME/.config/autostart/gnome-keyring-ssh.desktop" ]; then
 fi
 
 # Ensure the custom unit exists (stowed)
-if [ ! -e "$HOME/.config/systemd/user/ssh-agent.service" ]; then
-  echo "[ssh-agent] ERROR: ~/.config/systemd/user/ssh-agent.service not found. Did you stow packages/ubuntu/ssh_agent/?"
+UNIT_PATH="$HOME/.config/systemd/user/ssh-agent.service"
+if [ ! -L "$UNIT_PATH" ]; then
+  echo "[ssh-agent] ERROR: $UNIT_PATH must be a symlink (stowed)."
   exit 1
 fi
 
