@@ -11,8 +11,9 @@ cd dotfiles
 
 2. Run the Setup Script
 
-`setup_all.sh` runs the OS-specific bootstrap scripts and then calls `install.sh` to create symlinks for your dotfiles in the home directory.
-You only need to run this script - it will handle everything.
+`setup_all.sh` runs the OS-specific bootstrap scripts, calls `install.sh` to create symlinks for your dotfiles in `$HOME`, 
+and then executes the post-setup scripts under `scripts/`.
+This is the only script you need to run — it handles the entire setup end to end.
 
 ```bash
 ./setup_all.sh --bootstrap --upgrade [--cuda]
@@ -24,6 +25,7 @@ This will:
 - Configure development tools (git, vim, ssh, etc.)
 - Apply OS-specific settings (keyboard, defaults, etc.)
 - Create symbolic links for dotfiles (`install.sh` is called automatically)
+- Run post-setup scripts (`scripts/`) for final adjustments
 
 3. Directory Structure
 
@@ -32,6 +34,7 @@ This will:
 ├── README.md
 ├── bootstrap/     # OS-specific setup scripts
 ├── packages/      # OS-specific configuration files
+├── scripts/       # Post-setup scripts
 ├── install.sh     # Symlinks dotfiles into $HOME
 └── setup_all.sh   # Runs bootstrap scripts, then calls install.sh
 ```

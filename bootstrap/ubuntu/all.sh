@@ -54,7 +54,7 @@ run_script "$ROOT/docker.sh"
 run_script "$ROOT/bash.sh"
 
 if [ "$INSTALL_CUDA" -eq 1 ]; then
-  run_script "ROOT/cuda.sh"
+  run_script "$ROOT/cuda.sh"
 else
   echo "[skip] cuda.sh (INSTALL_CUDA=false)"
 fi
