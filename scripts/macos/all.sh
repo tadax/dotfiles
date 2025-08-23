@@ -2,4 +2,4 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")" && pwd)"
-# Add post scripts here...
+bash "$ROOT/vim.sh"
