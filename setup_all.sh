@@ -66,7 +66,18 @@ if [ "$DO_INSTALL" -eq 1 ]; then
   echo "[install] done"
 fi
 
-# 3) post/apply
+# 3) copy (Ubuntu): systemd unit + autostart
+if [ "$OS" = "ubuntu" ]; then
+  install -m 0644 -D \
+    "$ROOT/assets/ubuntu/systemd/user/ssh-agent-custom.service" \
+    "$HOME/.config/systemd/user/ssh-agent-custom.service"
+
+  install -m 0644 -D \
+    "$ROOT/assets/ubuntu/autostart/gnome-keyring-ssh.desktop" \
+    "$HOME/.config/autostart/gnome-keyring-ssh.desktop"
+fi
+
+# 4) post/apply
 if [ "$DO_POST" -eq 1 ]; then
   echo "[post:$OS] start"
   if [ "$OS" = "ubuntu" ]; then

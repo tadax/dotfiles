@@ -14,10 +14,10 @@ if [ ! -e "$HOME/.config/autostart/gnome-keyring-ssh.desktop" ]; then
   echo "[ssh-agent] WARN: ~/.config/autostart/gnome-keyring-ssh.desktop not found. Did you run stow (install.sh)?"
 fi
 
-# Ensure the custom unit exists (stowed)
-UNIT_PATH="$HOME/.config/systemd/user/ssh-agent.service"
+# Ensure the custom unit exists (installed by setup_all.sh)
+UNIT_PATH="$HOME/.config/systemd/user/ssh-agent-custom.service"
 if [ ! -e "$UNIT_PATH" ]; then
-  echo "[ssh-agent] ERROR: $UNIT_PATH must be a symlink (stowed)."
+  echo "[ssh-agent] ERROR: $UNIT_PATH not found. Did you run setup_all.sh?"
   exit 1
 fi
 
@@ -32,14 +32,14 @@ fi
 
 # Enable custom ssh-agent
 systemctl --user daemon-reload
-systemctl --user enable --now ssh-agent
+systemctl --user enable --now ssh-agent-custom.service
 
 # sanity output
-if systemctl --user --quiet is-active ssh-agent; then
+if systemctl --user --quiet is-active ssh-agent-custom; then
   echo "[ssh-agent] active"
 else
   echo "[ssh-agent] ERROR: service failed to start"
-  systemctl --user status ssh-agent --no-pager || true
+  systemctl --user status ssh-agent-custom --no-pager || true
   exit 1
 fi
 
