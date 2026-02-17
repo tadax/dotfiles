@@ -16,14 +16,13 @@ fi
 
 # Ensure the custom unit exists (stowed)
 UNIT_PATH="$HOME/.config/systemd/user/ssh-agent.service"
-if [ ! -L "$UNIT_PATH" ]; then
+if [ ! -e "$UNIT_PATH" ]; then
   echo "[ssh-agent] ERROR: $UNIT_PATH must be a symlink (stowed)."
   exit 1
 fi
 
 # Disable GNOME Keyring's SSH agent
 systemctl --user disable --now gcr-ssh-agent.socket gcr-ssh-agent.service 2>/dev/null || true
-systemctl --user mask gcr-ssh-agent.socket gcr-ssh-agent.service 2>/dev/null || true
 
 # Disable gpg-agent's SSH support
 if [ -f ~/.gnupg/gpg-agent.conf ]; then
