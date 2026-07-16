@@ -41,6 +41,13 @@ for group in "${ORDER[@]}"; do
   for sub in "${subpkgs[@]}"; do
     pkg_name="$(basename "$sub")"
     echo "[INFO] Linking package: $group/$pkg_name -> $TARGET_DIR"
+
+    if ! output="$(stow --simulate -d "$group_dir" -t "$TARGET_DIR" "$pkg_name" 2>&1)"; then
+      echo "[WARN] Skipping package due to conflicts: $group/$pkg_name" >&2
+      echo "$output" >&2
+      continue
+    fi
+
     stow -d "$group_dir" -t "$TARGET_DIR" "$pkg_name"
   done
 done
