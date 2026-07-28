@@ -18,5 +18,6 @@ brew update --verbose
 ! type tree >/dev/null 2>&1 && brew install tree
 ! type tmux >/dev/null 2>&1 && brew install tmux
 ! type docker >/dev/null 2>&1 && brew reinstall --cask docker
+! brew list --cask orbstack >/dev/null 2>&1 && brew install --cask orbstack
 
 echo "[brew] Done."
