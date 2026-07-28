@@ -8,7 +8,7 @@ fi
 
 PYTHON_VERSION="${PYTHON_VERSION:-3.11.5}"
 
-if command -v brew >/dev/null 2>&1; then
+if ! command -v brew >/dev/null 2>&1; then
   echo "[pyenv] Homebrew not found. Please run bootstrap/macos/brew.sh first."
   exit 1
 fi
@@ -34,16 +34,6 @@ fi
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-
-append_once() {
-  local file="$1" line="$2"
-  mkdir -p "$(dirname -- "$file")"
-  [ -f "$file" ] || : > "$file"
-  grep -Fqx "$line" "$file" || printf '%s\n' "$line" >> "$file"
-}
-append_once "$HOME/.bash_profile" 'export PYENV_ROOT="$HOME/.pyenv"'
-append_once "$HOME/.bash_profile" 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"'
-append_once "$HOME/.bash_profile" 'eval "$(pyenv init -)"'
 
 if ! pyenv versions --bare | grep -Fqx "$PYTHON_VERSION"; then
   echo "[pyenv] installing Python $PYTHON_VERSION"
