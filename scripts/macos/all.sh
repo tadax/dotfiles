@@ -3,3 +3,4 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")" && pwd)"
 bash "$ROOT/vim.sh"
+bash "$ROOT/orbstack.sh"
