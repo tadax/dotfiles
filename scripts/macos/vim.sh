@@ -16,6 +16,6 @@ else
 fi
 
 echo "[vim] Installing plugins via :PluginInstall"
-vim -E -s +PluginInstall +qall
+vim -Nu "$HOME/.vimrc" -i NONE -n -es +PluginInstall +qall
 
 echo "[vim] Done."
